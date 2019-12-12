@@ -18,12 +18,12 @@ Paper: [Guimaraes, A., Borin, E., & Aranha, D. F. (2019, May). Introducing arith
 
 Execution time (cycles) of our updated versions of QcBits, with (Updated_QcBits_AFR) and without (Updated_QcBits) a negligible (< 2^{-128}) Arithmetic Failure Rate; and of the additional implementation of BIKE-2, for comparison.
 
-|                          | Updated_QcBits | Updated_QcBits_AFR | BIKE-2         |
-|--------------------------|:--------------:|:------------------:|----------------|
+|                          | Updated_QcBits | Updated_QcBits_AFR |     BIKE-2     |
+|--------------------------|:--------------:|:------------------:|:--------------:|
 | Key Generation           |   40,265,904   |     21,332,058     | 12,944,920 (*) |
-| Encryption               |     259,306    |       256,655      | 348,227        |
-| Constant-time Decryption |    9,803,835   |      8,016,312     | (**)           |
-| Uniform Decryption       |    5,008,429   |      3,505,079     | 9,572,412      |
+| Encryption               |     259,306    |       256,655      |     348,227    |
+| Constant-time Decryption |    9,803,835   |      8,016,312     |      (**)      |
+| Uniform Decryption       |    5,008,429   |      3,505,079     |    9,572,412   |
 
 (∗) BIKE’s polynomial inversion is not constant-time.
 (**) BIKE does not present constant-time decryption
@@ -31,7 +31,10 @@ Execution time (cycles) of our updated versions of QcBits, with (Updated_QcBits_
 We benchmarked the implementations on an Intel i7-7820X processor with Hyper-Threading and TurboBoost disabled. The execution time of BIKE (Variant 2) is presented for comparison. More details in the paper.
 
 
-## Build 
+## Build and running
+
+CPU support: [AVX-512 (F/CD)](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX-512) </br>
+Compiler: GCC 7.3.1 
 
 ### Constant-time decryption
 
@@ -45,6 +48,6 @@ make
 
 ```console
 cd updated_qcbits/ 
-make
+make UNIFORM=1
 ./qcbits
 ```
